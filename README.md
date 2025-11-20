@@ -1,16 +1,31 @@
-# flutter_application_1
 
-A new Flutter project.
+📱 Task Management App
+A sleek and responsive Flutter application designed to help users manage their daily tasks with clarity and ease.
+✨ Features
+- ✅ Add, edit, delete, and cancel tasks
+- 📋 Scrollable task list with clean UI
+- 🎨 Beautiful layout using Flutter widgets
+- 💾 (Coming soon) Persistent local storage for tasks
+🖼️ Screenshots
+Add your app screenshots to the screenshots/ folder and reference them like this:
 
-## Getting Started
+![Home Screen](screenshots/Home_screen_TMA.png)
+![Task Editor](screenshots/Add_Task_Screen_TMA.png)
+![Task Editor](screenshots/Task_List_Screen_TMA.png)
 
-This project is a starting point for a Flutter application.
+🚀 Getting Started
+To run this project locally:
+flutter pub get
+flutter run
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Make sure you have Flutter installed. If not, follow the Flutter installation guide.
+📚 Resources
+If you're new to Flutter, check out:
+- Write your first Flutter app
+- Flutter Cookbook
+- Flutter Documentation
+👨‍💻 Developer
+Crafted with ❤️ by Ashish
+Flutter Developer & UI Designer
+Kathmandu, Nepal
