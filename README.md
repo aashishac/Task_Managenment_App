@@ -9,7 +9,7 @@ A sleek and responsive Flutter application designed to help users manage their d
 🖼️ Screenshots
 Add your app screenshots to the screenshots/ folder and reference them like this:
 
-![Home Screen](screenshots/Home_Screen_TMA.png)
+![Home Screen](screenshots/HomeScreen_TMA.png)
 ![Task Editor](screenshots/Add_Task_Screen_TMA.png)
 ![Task Editor](screenshots/Task_List_Screen_TMA.png)
 
