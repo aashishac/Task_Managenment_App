@@ -5,7 +5,7 @@ A sleek and responsive Flutter application designed to help users manage their d
 ✨ Features
 - ✅ Add, edit, delete, and cancel tasks
 - 📋 Scrollable task list with clean UI
-- 🎨 Beautiful layout using Flutter widgets
+- 🎨 Beautiful layout using Flutter widgets with dark mode
 - 💾 (Coming soon) Persistent local storage for tasks
 
 
