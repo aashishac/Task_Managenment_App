@@ -1,15 +1,19 @@
-enum TaskCategory { food, travel, entertainment, education }
+enum TaskCategory { food, travel, entertainment, education, health }
 
 class Task {
-  final String name;
+  final String title;
   final String description;
-  final DateTime date;
+  final DateTime createdDateTime;
+  bool isCompleted;
   final TaskCategory category;
+  final String id;
 
   Task({
-    required this.name,
+    required this.title,
     required this.description,
-    required this.date,
+    required this.createdDateTime,
     required this.category,
+    required this.id,
+    this.isCompleted = false,
   });
 }
