@@ -11,10 +11,12 @@ A sleek and responsive Flutter application designed to help users manage their d
 
 🖼️ Screenshots
 
-
-![Home Screen](screenshots/HomeScreen_TMA.png)
-![Task Editor](screenshots/Add_Task_Screen_TMA.png)
-![Task Editor](screenshots/Task_List_Screen_TMA.png)
+![Task Editor](/Splash_screen.png)
+![Task Editor](/Get_Started.png)
+![Home Screen](screenshots/Home_Screen.png)
+![Task Editor](screenshots/Add_Task_Screen.png)
+![Task Editor](screenshots/Delete_popup.png)
+![Task Editor](screenshots/Dark_mode.png)
 
 
 
