@@ -28,11 +28,7 @@ flutter run
 
 Make sure you have Flutter installed. If not, follow the Flutter installation guide.
 
-📚 Resources
-If you're new to Flutter, check out:
-- Write your first Flutter app
-- Flutter Cookbook
-- Flutter Documentation
+
 
 👨‍💻 Developer
 Crafted with ❤️ by Ashish
