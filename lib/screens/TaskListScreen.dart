@@ -19,33 +19,48 @@ class _TaskListScreenState extends State<TaskListScreen> {
   bool _selectAll = false;
 
   @override
+  void initState() {
+    super.initState();
+
+    // Load tasks after the first frame
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
+      final taskProvider = context.read<TaskProvider>();
+      await taskProvider.loadTodos(); // Load tasks from SQLite
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
         title: Consumer<TaskProvider>(
           builder: (context, taskProvider, child) {
-            final allTasks = taskProvider.tasks;
+            final allTasks = taskProvider.allTask;
+
             return TaskAppBarTitle(
               selectAll: _selectAll,
               tasks: allTasks,
-              onSelectAllChanged: (value) {
+              onSelectAllChanged: (value) async {
                 setState(() {
                   _selectAll = value;
-                  for (var task in allTasks) {
-                    task.isCompleted = _selectAll;
-                    taskProvider.updateTask(task);
-                  }
                 });
+
+                // Update all tasks in DB
+                for (var task in allTasks) {
+                  task.isCompleted = _selectAll;
+                  await taskProvider.updateTask(todo: task);
+                }
               },
-              onDeleteChecked: () {
-                // Delete only checked tasks
+              onDeleteChecked: () async {
                 final checkedTasks = allTasks
                     .where((task) => task.isCompleted)
                     .toList();
+
                 for (var task in checkedTasks) {
-                  taskProvider.removeTask(existedTask: task);
+                  await taskProvider.removeTask(id: task.id!);
                 }
+
                 setState(() {
                   _selectAll = false;
                 });
@@ -54,7 +69,6 @@ class _TaskListScreenState extends State<TaskListScreen> {
           },
         ),
       ),
-
       body: Consumer<TaskProvider>(
         builder: (context, taskProvider, child) {
           final todayTasks = taskProvider.getTodayTasks;
@@ -75,13 +89,11 @@ class _TaskListScreenState extends State<TaskListScreen> {
                     labelText: 'Today Tasks',
                     content: TaskList(allTaskList: todayTasks),
                   ),
-
                 if (upComingTasks.isNotEmpty)
                   TaskSection(
                     labelText: 'Upcoming Tasks',
                     content: TaskList(allTaskList: upComingTasks),
                   ),
-
                 if (pastTasks.isNotEmpty)
                   TaskSection(
                     labelText: 'Past Tasks',
@@ -92,7 +104,6 @@ class _TaskListScreenState extends State<TaskListScreen> {
           );
         },
       ),
-
       floatingActionButton: FloatingActionButton(
         backgroundColor: AppTheme.primaryColor,
         foregroundColor: AppTheme.iconBackgroundColor,

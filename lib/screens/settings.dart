@@ -1,7 +1,5 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/providers/theme_provider.dart';
+import 'package:flutter_application_1/providers/storage_provider.dart';
 import 'package:flutter_application_1/screens/TaskListScreen.dart';
 import 'package:flutter_application_1/themes/app_theme.dart';
 import 'package:provider/provider.dart';
@@ -19,7 +17,6 @@ class _SettingsState extends State<Settings> {
 
   @override
   Widget build(BuildContext context) {
-    final theme = context.watch<ThemeProvider>().isDarktheme;
     return Scaffold(
       appBar: AppBar(
         leading: GestureDetector(
@@ -118,15 +115,23 @@ class _SettingsState extends State<Settings> {
                             ),
                           ),
                           SizedBox(width: 25),
-                          Text('Dark Mode'),
+                          Text('Light Mode'),
                           Spacer(),
 
-                          Switch(
-                            inactiveTrackColor: Colors.black54,
-                            value: theme,
-                            onChanged: (value) {
-                              context.read<ThemeProvider>().toogletheme(value);
-                            }, // calls back to MyApp
+                          Selector<StorageProvider, bool>(
+                            selector: (_, value) {
+                              return value.isDarktheme;
+                            },
+                            builder: (context, value, child) {
+                              return Switch(
+                                value: value,
+                                onChanged: (value) {
+                                  context.read<StorageProvider>().setdarktheme(
+                                    value,
+                                  );
+                                },
+                              );
+                            },
                           ),
                         ],
                       ),

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/providers/storage_provider.dart';
 import 'package:flutter_application_1/screens/TaskListScreen.dart';
+import 'package:provider/provider.dart';
 
 class OnBoardingScreen extends StatefulWidget {
   const OnBoardingScreen({super.key});
@@ -13,13 +15,16 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
 
   final _pageController = PageController();
 
-  void _nextPage() {
+  void _nextPage() async {
     if (_currentPageIndex < _pages.length - 1) {
       _pageController.nextPage(
         duration: Duration(milliseconds: 800),
         curve: Curves.easeInOut,
       );
     } else {
+      // Logic to show once
+      await context.read<StorageProvider>().markOnBoardingSeen();
+
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(builder: (context) => TaskListScreen()),

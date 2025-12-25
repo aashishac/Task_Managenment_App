@@ -36,7 +36,7 @@ class TaskList extends StatelessWidget {
                   value: task.isCompleted,
                   onChanged: (value) {
                     task.isCompleted = value!;
-                    context.read<TaskProvider>().updateTask(task);
+                    context.read<TaskProvider>().updateTask(todo: task);
                   },
                 ),
 
@@ -126,7 +126,7 @@ class TaskList extends StatelessWidget {
                         getConfirmation(context: context).then((confirmed) {
                           if (confirmed == true) {
                             context.read<TaskProvider>().removeTask(
-                              existedTask: task,
+                              id: task.id!,
                             );
                           }
                         });

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/providers/storage_provider.dart';
 import 'package:flutter_application_1/providers/task_provider.dart';
 import 'package:flutter_application_1/providers/theme_provider.dart';
 import 'package:flutter_application_1/screens/splashscreen.dart';
@@ -12,6 +13,7 @@ void main() {
       providers: [
         ChangeNotifierProvider(create: (context) => TaskProvider()),
         ChangeNotifierProvider(create: (context) => ThemeProvider()),
+        ChangeNotifierProvider(create: (context) => StorageProvider()),
       ],
       child: const MyApp(),
     ),
@@ -26,14 +28,11 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  bool isDark = false; //
-
   @override
   Widget build(BuildContext context) {
-    final isDarkTheme = context.watch<ThemeProvider>().isDarktheme;
-
+    final provider = context.watch<StorageProvider>();
     return MaterialApp(
-      theme: isDarkTheme ? DarkTheme.darkTheme : AppTheme.lightTheme,
+      theme: provider.isDarktheme ? AppTheme.lightTheme : DarkTheme.darkTheme,
       debugShowCheckedModeBanner: false,
       home: SplashScreen(),
     );
