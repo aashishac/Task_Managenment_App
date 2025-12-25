@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/providers/storage_provider.dart';
+import 'package:flutter_application_1/screens/splashscreen.dart';
 import 'package:flutter_application_1/themes/app_theme.dart';
 import 'package:flutter_application_1/screens/settings.dart';
 import 'package:flutter_application_1/models/task.dart';
+import 'package:provider/provider.dart';
 
 class TaskAppBarTitle extends StatelessWidget {
   final bool selectAll;
@@ -107,6 +110,30 @@ class TaskAppBarTitle extends StatelessWidget {
                     Text('Settings'),
                   ],
                 ),
+              ),
+            ),
+            PopupMenuItem(
+              child: Row(
+                children: [
+                  Icon(Icons.restore),
+                  TextButton(
+                    onPressed: () {
+                      context.read<StorageProvider>().removeOnBoardingSeen();
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) {
+                            return SplashScreen();
+                          },
+                        ),
+                      );
+                    },
+                    child: Text(
+                      'Reset data',
+                      style: TextStyle(fontSize: 14.0, color: Colors.white),
+                    ),
+                  ),
+                ],
               ),
             ),
           ],

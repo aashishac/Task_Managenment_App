@@ -41,4 +41,10 @@ class StorageProvider extends ChangeNotifier {
     await storageService.setOnBoardingSeen();
     notifyListeners();
   }
+
+  Future<void> removeOnBoardingSeen() async {
+    _hasSeenOnBoarding = false;
+    storageService.removeOnBoardingSeen();
+    notifyListeners();
+  }
 }

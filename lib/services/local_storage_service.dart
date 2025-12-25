@@ -32,4 +32,8 @@ class LocalStorageService {
   Future<bool> getOnBoardingSeen() async {
     return await _prefs.getBool(LocalStorageKey.onboarding.name) ?? false;
   }
+
+  Future<void> removeOnBoardingSeen() async {
+    await _prefs.remove(LocalStorageKey.onboarding.name);
+  }
 }
